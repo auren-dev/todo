@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv'
 import express from 'express'
+import cors from 'cors'
 import mongoose from "mongoose"
 import mockTasks from './data/mock.js'
 import Task from './models/Task.js'
@@ -7,6 +8,7 @@ import Task from './models/Task.js'
 dotenv.config()
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 
 await mongoose.connect(process.env.DATABASE_URL).then(() => console.log('Connected to DB'))
